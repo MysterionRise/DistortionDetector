@@ -14,6 +14,7 @@
 		8902F734226238FE00B65279 /* DistortionDetector.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8902F732226238FE00B65279 /* DistortionDetector.xcdatamodeld */; };
 		8902F736226238FF00B65279 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8902F735226238FF00B65279 /* Assets.xcassets */; };
 		8902F739226238FF00B65279 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8902F737226238FF00B65279 /* LaunchScreen.storyboard */; };
+		89F64BEB22624062000D26C2 /* OpenCVWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 89F64BEA22624062000D26C2 /* OpenCVWrapper.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,10 @@
 		8902F735226238FF00B65279 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8902F738226238FF00B65279 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8902F73A226238FF00B65279 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89F64BE822624062000D26C2 /* DistortionDetector-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DistortionDetector-Bridging-Header.h"; sourceTree = "<group>"; };
+		89F64BE922624062000D26C2 /* OpenCVWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCVWrapper.h; sourceTree = "<group>"; };
+		89F64BEA22624062000D26C2 /* OpenCVWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCVWrapper.mm; sourceTree = "<group>"; };
+		89F64BEC226245B7000D26C2 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,10 +50,14 @@
 		8902F71F226238FE00B65279 = {
 			isa = PBXGroup;
 			children = (
+				89F64BEC226245B7000D26C2 /* PrefixHeader.pch */,
+				89F64BE922624062000D26C2 /* OpenCVWrapper.h */,
+				89F64BEA22624062000D26C2 /* OpenCVWrapper.mm */,
 				8902F72A226238FE00B65279 /* DistortionDetector */,
 				8902F729226238FE00B65279 /* Products */,
 				8E7CEDCC61B02F60329ACD7D /* Pods */,
 				BB2539963C900BF6F94E6315 /* Frameworks */,
+				89F64BE822624062000D26C2 /* DistortionDetector-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,7 +89,6 @@
 				2959A8F55136CED827E2DD05 /* Pods-DistortionDetector.debug.xcconfig */,
 				39DBDE629B37E611CCEFA960 /* Pods-DistortionDetector.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -125,6 +133,7 @@
 				TargetAttributes = {
 					8902F727226238FE00B65279 = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -191,6 +200,7 @@
 			files = (
 				8902F72E226238FE00B65279 /* ViewController.swift in Sources */,
 				8902F734226238FE00B65279 /* DistortionDetector.xcdatamodeld in Sources */,
+				89F64BEB22624062000D26C2 /* OpenCVWrapper.mm in Sources */,
 				8902F72C226238FE00B65279 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,8 +348,11 @@
 			baseConfigurationReference = 2959A8F55136CED827E2DD05 /* Pods-DistortionDetector.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2877554396;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = DistortionDetector/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -347,6 +360,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.mystic.DistortionDetector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DistortionDetector-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -357,8 +372,11 @@
 			baseConfigurationReference = 39DBDE629B37E611CCEFA960 /* Pods-DistortionDetector.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2877554396;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = DistortionDetector/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -366,6 +384,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.mystic.DistortionDetector;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DistortionDetector-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
