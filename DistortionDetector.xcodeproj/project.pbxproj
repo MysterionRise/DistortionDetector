@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02C646BB15CDC0DD33901906 /* Pods_DistortionDetector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F9AB21C3B6368E8C81A834D /* Pods_DistortionDetector.framework */; };
 		8902F72C226238FE00B65279 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8902F72B226238FE00B65279 /* AppDelegate.swift */; };
 		8902F72E226238FE00B65279 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8902F72D226238FE00B65279 /* ViewController.swift */; };
 		8902F731226238FE00B65279 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8902F72F226238FE00B65279 /* Main.storyboard */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2959A8F55136CED827E2DD05 /* Pods-DistortionDetector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DistortionDetector.debug.xcconfig"; path = "Target Support Files/Pods-DistortionDetector/Pods-DistortionDetector.debug.xcconfig"; sourceTree = "<group>"; };
+		39DBDE629B37E611CCEFA960 /* Pods-DistortionDetector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DistortionDetector.release.xcconfig"; path = "Target Support Files/Pods-DistortionDetector/Pods-DistortionDetector.release.xcconfig"; sourceTree = "<group>"; };
+		7F9AB21C3B6368E8C81A834D /* Pods_DistortionDetector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DistortionDetector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8902F728226238FE00B65279 /* DistortionDetector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DistortionDetector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8902F72B226238FE00B65279 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8902F72D226238FE00B65279 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02C646BB15CDC0DD33901906 /* Pods_DistortionDetector.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				8902F72A226238FE00B65279 /* DistortionDetector */,
 				8902F729226238FE00B65279 /* Products */,
+				8E7CEDCC61B02F60329ACD7D /* Pods */,
+				BB2539963C900BF6F94E6315 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +74,24 @@
 			path = DistortionDetector;
 			sourceTree = "<group>";
 		};
+		8E7CEDCC61B02F60329ACD7D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2959A8F55136CED827E2DD05 /* Pods-DistortionDetector.debug.xcconfig */,
+				39DBDE629B37E611CCEFA960 /* Pods-DistortionDetector.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BB2539963C900BF6F94E6315 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7F9AB21C3B6368E8C81A834D /* Pods_DistortionDetector.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,6 +99,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8902F73D226238FF00B65279 /* Build configuration list for PBXNativeTarget "DistortionDetector" */;
 			buildPhases = (
+				9D244999FE68756ED12300A8 /* [CP] Check Pods Manifest.lock */,
 				8902F724226238FE00B65279 /* Sources */,
 				8902F725226238FE00B65279 /* Frameworks */,
 				8902F726226238FE00B65279 /* Resources */,
@@ -132,6 +158,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9D244999FE68756ED12300A8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DistortionDetector-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8902F724226238FE00B65279 /* Sources */ = {
@@ -284,6 +335,7 @@
 		};
 		8902F73E226238FF00B65279 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2959A8F55136CED827E2DD05 /* Pods-DistortionDetector.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -302,6 +354,7 @@
 		};
 		8902F73F226238FF00B65279 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39DBDE629B37E611CCEFA960 /* Pods-DistortionDetector.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
