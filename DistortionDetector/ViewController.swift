@@ -9,13 +9,20 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    //MARK: Properties
+    @IBOutlet weak var openCVLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(OpenCVWrapper.openCVVersionString())")
         // Do any additional setup after loading the view.
     }
 
+    //MARK: Actions
+    @IBAction func checkOpenCVVersion(_ sender: Any) {
+        openCVLabel?.text = OpenCVWrapper.openCVVersionString()
+    }
+    
 
 }
 
