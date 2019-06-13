@@ -8,10 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     //MARK: Properties
     @IBOutlet weak var openCVLabel: UILabel!
+    @IBOutlet weak var image: UIImageView!
+    
+    var imagePicker: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +22,21 @@ class ViewController: UIViewController {
     }
 
     //MARK: Actions
+    @IBAction func captureImg(_ sender: Any) {
+        imagePicker =  UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    
     @IBAction func checkOpenCVVersion(_ sender: Any) {
         openCVLabel?.text = OpenCVWrapper.openCVVersionString()
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        imagePicker.dismiss(animated: true, completion: nil)
+        image.image = OpenCVWrapper.toGray((info[.originalImage] as? UIImage)!)
     }
     
 
