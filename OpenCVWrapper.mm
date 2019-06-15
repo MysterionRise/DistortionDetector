@@ -22,8 +22,56 @@
     UIImageToMat(source, img);
     cvtColor(img, result, CV_BGR2GRAY);
     return MatToUIImage(result);
-    //    TODO fix and ACTUALLY convery to gray color :)
-//    return source;
+}
+
++ (UIImage *)containsChessBoard:(UIImage *)input {
+    cv::Size patternsize(9, 6); //interior number of corners TODO make it param
+    std::vector<cv::Point2f> imageCorners; //this will be filled by the detected corners
+    std::vector<cv::Point3f> objectCorners;
+    
+    std::vector<std::vector<cv::Point2f>> imageObjects;
+    std::vector<std::vector<cv::Point3f>> objectObjects;
+    
+    for (int i = 0; i < 9; ++i)
+        for (int j = 0; j < 6; ++j)
+            objectCorners.push_back(cv::Point3f(i, j, 0.0f));
+    
+    
+    cv::Mat img;
+    cv::Mat gray;
+    cv::Mat cameraMatrix;
+    cv::Mat distCoeffs;
+    UIImageToMat(input, img);
+    cvtColor(img, gray, CV_BGR2GRAY);
+    bool patternfound = findChessboardCorners(gray, patternsize, imageCorners,
+                                              cv::CALIB_CB_ADAPTIVE_THRESH + cv::CALIB_CB_NORMALIZE_IMAGE
+                                              + cv::CALIB_CB_FAST_CHECK);
+    if(patternfound)
+        cornerSubPix(gray, imageCorners, cv::Size(11, 11), cv::Size(-1, -1),
+                     cvTermCriteria(CV_TERMCRIT_EPS + CV_TERMCRIT_ITER, 30, 0.1));
+    drawChessboardCorners(img, patternsize, cv::Mat(imageCorners), patternfound);
+    
+    std::vector<cv::Mat> rvecs, tvecs;
+    
+    imageObjects.push_back(imageCorners);
+    objectObjects.push_back(objectCorners);
+    
+    NSLog(@"Running calibrate camera");
+    double error = cv::calibrateCamera(objectObjects, imageObjects, img.size(), cameraMatrix, distCoeffs, rvecs, tvecs);
+    
+    NSLog(@"Debug");
+    for (int i = 0; i < distCoeffs.size().height; ++i)
+        for (int j = 0; j < distCoeffs.size().width; ++j)
+            NSLog(@"%f", distCoeffs.at<float>(i, j));
+    
+    cv::Mat optimalMatrix = cv::getOptimalNewCameraMatrix(cameraMatrix, distCoeffs, img.size(), 1.0f);
+    
+    cv::Mat freshInput;
+    cv::Mat newRes;
+    UIImageToMat(input, freshInput);
+    
+    cv::undistort(freshInput, newRes, cameraMatrix, distCoeffs, optimalMatrix);
+    return MatToUIImage(newRes);
 }
 
 @end

@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIImage *)toGray:(UIImage *)source;
 
++ (UIImage *)containsChessBoard:(UIImage *)input;
+
 @end
 
 NS_ASSUME_NONNULL_END

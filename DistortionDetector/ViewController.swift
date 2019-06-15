@@ -31,12 +31,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     
     @IBAction func checkOpenCVVersion(_ sender: Any) {
-        openCVLabel?.text = OpenCVWrapper.openCVVersionString()
+        openCVLabel.text = OpenCVWrapper.openCVVersionString()
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imagePicker.dismiss(animated: true, completion: nil)
-        image.image = OpenCVWrapper.toGray((info[.originalImage] as? UIImage)!)
+//        openCVLabel.text = String(OpenCVWrapper.containsChessBoard((info[.originalImage] as? UIImage)!))
+        image.image = OpenCVWrapper.containsChessBoard((info[.originalImage] as? UIImage)!)
     }
     
 
