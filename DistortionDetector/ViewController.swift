@@ -20,7 +20,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
+    
     //MARK: Actions
     @IBAction func captureImg(_ sender: Any) {
         imagePicker =  UIImagePickerController()
@@ -36,10 +36,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imagePicker.dismiss(animated: true, completion: nil)
-//        openCVLabel.text = String(OpenCVWrapper.containsChessBoard((info[.originalImage] as? UIImage)!))
+        //        openCVLabel.text = String(OpenCVWrapper.containsChessBoard((info[.originalImage] as? UIImage)!))
         image.image = OpenCVWrapper.containsChessBoard((info[.originalImage] as? UIImage)!)
     }
     
-
+    
 }
 
