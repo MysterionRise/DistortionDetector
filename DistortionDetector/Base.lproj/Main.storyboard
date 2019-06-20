@@ -53,7 +53,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="image" destination="ZlA-Ie-qcx" id="8sg-v9-55c"/>
+                        <outlet property="imageView" destination="ZlA-Ie-qcx" id="nim-SD-qpo"/>
                         <outlet property="openCVLabel" destination="sVy-NK-xQU" id="tho-of-DCa"/>
                     </connections>
                 </viewController>

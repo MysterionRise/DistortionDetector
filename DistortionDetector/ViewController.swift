@@ -12,9 +12,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     //MARK: Properties
     @IBOutlet weak var openCVLabel: UILabel!
-    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
     
     var imagePicker: UIImagePickerController!
+    var capturedImages = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +32,20 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     
     @IBAction func checkOpenCVVersion(_ sender: Any) {
-        openCVLabel.text = OpenCVWrapper.openCVVersionString()
+        
+        imageView.image = OpenCVWrapper.containsChessBoard(capturedImages)
+        capturedImages.removeAll()
+//        openCVLabel.text = OpenCVWrapper.openCVVersionString()
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
         imagePicker.dismiss(animated: true, completion: nil)
         //        openCVLabel.text = String(OpenCVWrapper.containsChessBoard((info[.originalImage] as? UIImage)!))
-        image.image = OpenCVWrapper.containsChessBoard((info[.originalImage] as? UIImage)!)
+        let image = info[UIImagePickerController.InfoKey.originalImage]
+        capturedImages.append(image as! UIImage)
+        openCVLabel.text = String(capturedImages.count)
+        
     }
     
     
